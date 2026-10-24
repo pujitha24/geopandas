@@ -834,6 +834,11 @@ class TestPolygonPlotting:
         _check_colors(2, ax.collections[0].get_facecolors(), [(0.5, 0.5, 0.5, 0.5)] * 2)
         _check_colors(2, ax.collections[0].get_edgecolors(), [(0.4, 0.5, 0.6, 0.5)] * 2)
 
+        # short aliases with a single rgba tuple
+        ax = self.df.plot(fc=(0.5, 0.5, 0.5, 0.5), ec=(0.4, 0.5, 0.6, 0.5))
+        _check_colors(2, ax.collections[0].get_facecolors(), [(0.5, 0.5, 0.5, 0.5)] * 2)
+        _check_colors(2, ax.collections[0].get_edgecolors(), [(0.4, 0.5, 0.6, 0.5)] * 2)
+
     def test_style_kwargs_linestyle(self):
         #   single
         ax = self.df.plot(linestyle=":", linewidth=1)

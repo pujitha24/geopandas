@@ -137,8 +137,9 @@ def _expand_kwargs(kwargs: dict, multiindex: np.ndarray) -> None:
     from matplotlib.colors import is_color_like
 
     scalar_kwargs = ["marker", "path_effects"]
+    color_aliases = ["c", "ec", "fc"]
     for att, value in kwargs.items():
-        if "color" in att:  # color(s), edgecolor(s), facecolor(s)
+        if "color" in att or att in color_aliases:  # color(s), edgecolor(s), ...
             if is_color_like(value):
                 continue
         elif "linestyle" in att:  # linestyle(s)
